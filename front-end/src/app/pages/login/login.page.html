@@ -1,0 +1,40 @@
+<ion-content [fullscreen]="true">
+<!--  <ion-grid class="grid1">-->
+<!--    <ion-row class="row1">-->
+<!--      <ion-col>-->
+
+<!--      </ion-col>-->
+<!--    </ion-row>-->
+
+<!--    <ion-row class="row2">-->
+<!--      <ion-col>-->
+
+<!--      </ion-col>-->
+<!--    </ion-row>-->
+
+<!--  </ion-grid>-->
+  <div class="pai">
+      <div class="contaier-login" size="12" size-sm="4">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <h1 class="ion-text-center">CRUD ESTUDO</h1>
+            </ion-col>
+          </ion-row>
+          <form (ngSubmit)="login()" [formGroup]="credenciais">
+            <div class="input-grup">
+              <ion-item lines="full">
+                <ion-icon name="person" class="icon-login" ></ion-icon>
+                <ion-input type="text" required placeholder="Login" formControlName="login"></ion-input>
+              </ion-item>
+              <ion-item lines="full">
+                <ion-icon name="lock-closed" class="icon-login"></ion-icon>
+                <ion-input type="password" placeholder="Senha" formControlName="senha" required=""></ion-input>
+              </ion-item>
+            </div>
+            <ion-button type="submit" color="primary" expand="block" [disabled]="!credenciais.valid">Login</ion-button>
+          </form>
+        </ion-grid>
+      </div>
+  </div>
+</ion-content>

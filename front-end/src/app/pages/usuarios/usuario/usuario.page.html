@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/usuarios"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Novo Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form (ngSubmit)="cadastrar()" [formGroup]="usuario">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" size-sm="6">
+            <ion-input label="Nome" label-placement="floating" fill="outline" placeholder="Nome do usuario" formControlName="nome"> </ion-input>
+          </ion-col>
+          <ion-col size="12" size-sm="6">
+            <ion-input label="CPF" type="number" label-placement="floating" fill="outline" placeholder="CPF do usuario" formControlName="cpf" maxlength="11"> </ion-input>
+          </ion-col>
+          <ion-col size="12" size-sm="6">
+            <ion-input label="Login" type="email" label-placement="floating" fill="outline" placeholder="Login de Autenticação" formControlName="login"> </ion-input>
+          </ion-col>
+          <ion-col size="12" size-sm="6">
+            <ion-input label="Senha" type="password" label-placement="floating" fill="outline" placeholder="Senha de Autenticação" formControlName="senha"> </ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row *appHasPermission="[Roles.ROLE_CONCEDER_PERMISSAO]">
+          <ion-col size="12" size-sm="6">
+            <ion-list>
+              <ion-item>
+                <ion-select aria-label="Fruit" [compareWith]="trackById" formControlName="perfis" placeholder="Selecione as permissões" [multiple]="true">
+                  <ion-select-option *ngFor="let result of permissoes" [value]="result">{{result.nome}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" size-sm="3" offset-sm="9">
+            <ion-button type="submit" color="primary" expand="block"  [disabled]="!usuario.valid">Registrar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </form>
+</ion-content>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<style>
+
+    body{
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    h1{
+        text-align: center;
+        background-color: #F4A460;
+        padding: 20px;
+    }
+
+    .centerComponent{
+        display: flex;
+        justify-content: center;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        align-items: center;
+        border-collapse: collapse;
+    }
+
+    th{
+        height: 60px;
+        width: 110px;
+        background-color: #F4A460;
+    }
+
+    td{
+        text-align: center;
+    }
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Relatorio de Pessoas</title>
+</head>
+<body>
+<h1>Pessoas</h1>
+<div class="centerComponent">
+    <table class="tabelaPessoa">
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Apelido</th>
+            <th>Time</th>
+            <th>CPF</th>
+            <th>Hobbie</th>
+            <th>Cidade</th>
+        </tr>
+        <tr>
+            <td th:text="${codigoPessoa}"></td>
+            <td th:text="${nomePessoa}"></td>
+            <td th:text="${apelidoPessoa}"></td>
+            <td th:text="${timePessoa}"></td>
+            <td th:text="${cpfPessoa}"></td>
+            <td th:text="${hobbiePessoa}"></td>
+            <td th:text="${nomeCidade}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

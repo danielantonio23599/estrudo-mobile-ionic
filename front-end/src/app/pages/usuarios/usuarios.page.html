@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-searchbar [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let result of results" class="ion-align-items-stretch ion-align-items-center">
+        <ion-card color="light" style="width: 100%; max-width: none;">
+          <ion-card-header>
+            <ion-card-title>{{result.nome}}</ion-card-title>
+            <ion-card-subtitle>{{result.login}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            {{result.cpf}}
+          </ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-select aria-label="Fruit" [compareWith]="trackById" [(ngModel)]="result.perfis" placeholder="Gerenciar Permissões" [multiple]="true">
+                <ion-select-option [disabled]="true" *ngFor="let perf of permissoes" [value]="perf">{{perf.nome}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+          <ion-button  *appHasPermission="[Roles.ROLE_CADASTRO_USUARIO]" fill="clear" routerLink="./usuario/{{result.id}}">Editar</ion-button>
+        </ion-card>
+    </ion-item>
+  </ion-list>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button routerLink="./usuario">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

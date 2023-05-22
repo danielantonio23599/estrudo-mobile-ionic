@@ -1,0 +1,17 @@
+version: '3.1'
+services:
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: crudestudo
+      MARIADB_USER: root
+      MARIADB_PASSWORD: root
+
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+
+    ports:
+      - 3306:3306
